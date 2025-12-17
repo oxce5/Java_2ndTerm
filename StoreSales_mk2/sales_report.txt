@@ -1,0 +1,5 @@
+Branch 1: ₱1,000,001.00 - Excellent Performance
+Branch 2: ₱99,999.00 - Good Performance
+Branch 3: ₱49,999.00 - Needs Improvement
+Branch 4: ₱50,000.00 - Good Performance
+Branch 5: ₱100,000.00 - Good Performance

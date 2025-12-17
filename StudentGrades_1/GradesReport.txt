@@ -1,0 +1,7 @@
+Student Grades:
+Kasane Teto - 100.00
+Hatsune Miku - 95.00
+Akita Neru - 74.00
+
+Passed: 2
+Failed: 1

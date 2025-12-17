@@ -1,0 +1,18 @@
+
+Products and Quantities: 
+teto pear - 0
+teto plush - 0
+apple - 20
+baba - 200
+
+Total quantity: 220
+In stock: 2
+Out of stock: 2
+
+Products and Quantities: 
+kwi - 20
+mango - 1000
+
+Total quantity: 1020
+In stock: 2
+Out of stock: 0
