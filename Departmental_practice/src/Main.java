@@ -23,7 +23,7 @@ public class Main {
 
     switch (choice) {
       case 1:
-        saveFile("library_report.txt", constructData());
+        saveFile("library_report.txt", constructData("library_report.txt"));
         MainUI();
         break;
       case 2:
@@ -37,25 +37,38 @@ public class Main {
     }
   }
 
-  public static String constructData() throws IOException{
-    StringBuilder sb = new StringBuilder();
-    scan.nextLine();
-    System.out.print("Enter book ID: ");
-    String bookID = scan.nextLine().trim();
-    sb.append(String.format("%d. ID: %s", readFile("library_report.txt", true), bookID)).append(" | ");
-    System.out.print("Enter book name: ");
-    String bookName = scan.nextLine().trim();
-    sb.append("Title: ").append(bookName).append(" | ");
-    System.out.print("Enter book author: ");
-    String bookAuthor = scan.nextLine().trim();
-    sb.append("Author: ").append(bookAuthor).append(" | ");
-    System.out.print("Enter book genre: ");
-    String bookGenre = scan.nextLine().trim();
-    sb.append("Genre: ").append(bookGenre).append(" | ");
-    System.out.print("Enter book availability: ");
-    String bookAvail = scan.nextLine().trim();
-    sb.append("Status: ").append(bookAvail);
-    return sb.toString();
+  public static String constructData(String filename) throws IOException {
+      StringBuilder sb = new StringBuilder();
+
+      // Consume newline
+      scan.nextLine();
+
+      // Define prompts and field labels
+      String[][] fields = {
+        {"Enter book ID: ", "ID"},
+        {"Enter book name: ", "Title"},
+        {"Enter book author: ", "Author"},
+        {"Enter book genre: ", "Genre"},
+        {"Enter book availability: ", "Status"}
+      };
+
+      // Get next index once
+      int index = readFile(filename, true);
+
+      // Iterate through field 2D array and build a String
+      for (int i = 0; i < fields.length; i++) {
+        System.out.print(fields[i][0]);
+        String input = scan.nextLine().trim();
+
+        if (i == 0) {
+          // For ID, prepend the index
+          sb.append(String.format("%d. %s: %s", index, fields[i][1], input));
+        } else {
+          sb.append(" | ").append(fields[i][1]).append(": ").append(input);
+        }
+      }
+
+      return sb.toString();
   }
 
   private static boolean isFileEmpty(String filename) {
