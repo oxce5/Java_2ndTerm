@@ -113,7 +113,6 @@ public class Main {
    * @throws IOException
    */
   public static Integer readFile(String filename, boolean fetchLastIndex) throws IOException {
-      // early return if file does not exist and fetchLastIndex is set to true
       if (isFileEmpty(filename) && fetchLastIndex) return 1;
       String lastLine = null;
 
@@ -132,7 +131,6 @@ public class Main {
           return null;
       }
 
-      // return index + 1 by splitting a String
       String[] index = lastLine.split("\\.");
       return Integer.parseInt(index[0]) + 1;
   }
