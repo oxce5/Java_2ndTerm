@@ -8,6 +8,10 @@ import java.util.Scanner;
 
 public class Main {
   static Scanner scan = new Scanner(System.in);
+  /**
+   * Main UI method
+   * @throws IOException
+   */
   public static void MainUI() throws IOException{
     System.out.println("===Library Book Management System===");
     System.out.println("1) Add New Book");
@@ -16,7 +20,7 @@ public class Main {
     System.out.print("Choice: ");
     int choice = scan.nextInt();
 
-    if (choice > 4) {
+    if (choice > 3) {
       System.out.println("Invalid choice. ");
       MainUI();
     }
@@ -37,6 +41,12 @@ public class Main {
     }
   }
 
+  /**
+   * Constructs a String based on user input 
+   * @param filename
+   * @return formatted String of data
+   * @throws IOException
+   */
   public static String constructData(String filename) throws IOException {
       StringBuilder sb = new StringBuilder();
 
@@ -49,7 +59,7 @@ public class Main {
         {"Enter book name: ", "Title"},
         {"Enter book author: ", "Author"},
         {"Enter book genre: ", "Genre"},
-        {"Enter book availability: ", "Status"}
+        {"Enter book availability (Available/Not Available): ", "Status"}
       };
 
       // Get next index once
@@ -71,13 +81,18 @@ public class Main {
       return sb.toString();
   }
 
+  // Checks if file is empty through exists() or 0 file len
   private static boolean isFileEmpty(String filename) {
     File file = new File(filename);
     if (!(file.exists()) || (file.length() == 0)) return true;
     return false;
   }
 
-  public static void saveFile(String filename, String data) {
+  /**
+   * @param filename name of file
+   * @param data formatted String
+   */
+  public static void saveFile(String filename, String data) throws IOException {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
       if (isFileEmpty(filename)) writer.write("===All Books===\n");
       writer.write(data);
@@ -86,20 +101,23 @@ public class Main {
       System.out.println("\nBook saved:");
       System.out.println(data);
       System.out.printf("%nData saved to %s.%n", filename);
-    } catch (IOException e) {
-      e.printStackTrace();
     }
   }
 
+  /**
+   * @param filename
+   * @param fetchLastIndex
+   * @return null if fetchLastIndex is set to false.
+   * @return 1 if fetchLastIndex is true and file has no file Length or does not exist.
+   * @return index + 1 of last line of file if file exists
+   * @throws IOException
+   */
   public static Integer readFile(String filename, boolean fetchLastIndex) throws IOException {
-      File file = new File(filename);
-      if (!file.exists() || file.length() == 0) {
-          return fetchLastIndex ? 1 : null;
-      }
-
+      // early return if file does not exist and fetchLastIndex is set to true
+      if (isFileEmpty(filename) && fetchLastIndex) return 1;
       String lastLine = null;
 
-      try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+      try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
           String line;
           while ((line = reader.readLine()) != null) {
               if (!fetchLastIndex) {
@@ -109,13 +127,16 @@ public class Main {
           }
       }
 
+      // Housekeeping
       if (!fetchLastIndex || lastLine == null || lastLine.isEmpty()) {
           return null;
       }
 
-      return Character.getNumericValue(lastLine.charAt(0)) + 1;
+      // return index + 1 by splitting a String
+      String[] index = lastLine.split("\\.");
+      return Integer.parseInt(index[0]) + 1;
   }
-
+  
   public static void main(String[] args) throws IOException {
     MainUI();
   }
