@@ -49,7 +49,7 @@ public class Main {
         {"Enter book name: ", "Title"},
         {"Enter book author: ", "Author"},
         {"Enter book genre: ", "Genre"},
-        {"Enter book availability: ", "Status"}
+        {"Enter book availability (Available/Not Available): ", "Status"}
       };
 
       // Get next index once
@@ -92,14 +92,10 @@ public class Main {
   }
 
   public static Integer readFile(String filename, boolean fetchLastIndex) throws IOException {
-      File file = new File(filename);
-      if (!file.exists() || file.length() == 0) {
-          return fetchLastIndex ? 1 : null;
-      }
-
+      if (isFileEmpty(filename) && fetchLastIndex) return 1;
       String lastLine = null;
 
-      try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+      try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
           String line;
           while ((line = reader.readLine()) != null) {
               if (!fetchLastIndex) {
@@ -113,7 +109,8 @@ public class Main {
           return null;
       }
 
-      return Character.getNumericValue(lastLine.charAt(0)) + 1;
+      String[] index = lastLine.split("\\.");
+      return Integer.parseInt(index[0]) + 1;
   }
 
   public static void main(String[] args) throws IOException {
