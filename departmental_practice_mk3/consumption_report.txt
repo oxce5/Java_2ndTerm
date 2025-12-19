@@ -1,0 +1,25 @@
+Household: fffff
+Consumption: 500.00 kWh
+Original Bill: 6,000.00
+Discounted bill: Not Applicable.
+-----------------------
+Household: ttttt
+Consumption: 199.00 kWh
+Original Bill: 1,592.00
+Discounted bill: 1,432.80
+-----------------------
+Household: wwwww
+Consumption: 200.00 kWh
+Original Bill: 2,000.00
+Discounted bill: Not Applicable.
+-----------------------
+Household: eeee
+Consumption: 499.00 kWh
+Original Bill: 4,990.00
+Discounted bill: Not Applicable.
+-----------------------
+Household: rrrr
+Consumption: 501.00 kWh
+Original Bill: 6,012.00
+Discounted bill: Not Applicable.
+-----------------------
