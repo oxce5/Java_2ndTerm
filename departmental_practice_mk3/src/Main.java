@@ -3,7 +3,7 @@ import java.io.FileWriter;
 import java.util.Scanner;
 
 public class Main {
-  static Scanner scan = new Scanner(System.in);
+  private Scanner scan = new Scanner(System.in);
 
   public enum CATEGORY {
     HIGH,
@@ -13,13 +13,12 @@ public class Main {
 
   public void MainProcess() {
     System.out.print("How many households? ");
-    String[] householdNames = new String[scan.nextInt()];
-    for (String household : householdNames) {
-      SaveData("ElectricityBillingReport.txt", DataConstructor(householdNames));
+    for (int i = 0; i < scan.nextInt(); i++) {
+      SaveData("ElectricityBillingReport.txt", DataConstructor());
     }
   }
 
-  private String DataConstructor(String[] households) {
+  private String DataConstructor() {
     StringBuilder sb = new StringBuilder();
     scan.nextLine();
     System.out.print("Enter household name: ");
@@ -66,7 +65,7 @@ public class Main {
     return bill * 0.9;
   }
 
-  private static void SaveData(String filename, String data) {
+  private void SaveData(String filename, String data) {
     try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true))) {
       writer.write(data);
       writer.newLine();
@@ -78,6 +77,5 @@ public class Main {
   public static void main(String[] args) {
     Main main = new Main();
     main.MainProcess();
-    scan.close();
   }
 }
