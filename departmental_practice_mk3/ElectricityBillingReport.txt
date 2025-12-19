@@ -1,0 +1,20 @@
+Household: Santos Family
+Consumption: 199.00 kWh
+Original Bill: 1,592.00
+Discounted bill: 1,432.80
+-----------------------
+Household: Very Safe Building
+Consumption: 500.00 kWh
+Original Bill: 6,000.00
+Discounted bill: Not Applicable.
+-----------------------
+Household: Dela Cruz Compound
+Consumption: 200.00 kWh
+Original Bill: 2,000.00
+Discounted bill: Not Applicable.
+-----------------------
+Household: Batcave
+Consumption: 1000.00 kWh
+Original Bill: 12,000.00
+Discounted bill: Not Applicable.
+-----------------------
