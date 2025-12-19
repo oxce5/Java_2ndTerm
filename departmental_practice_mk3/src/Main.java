@@ -15,7 +15,7 @@ public class Main {
     System.out.print("How many households? ");
     String[] householdNames = new String[scan.nextInt()];
     for (String household : householdNames) {
-      SaveData("consumption_report.txt", DataConstructor(householdNames));
+      SaveData("ElectricityBillingReport.txt", DataConstructor(householdNames));
     }
   }
 
