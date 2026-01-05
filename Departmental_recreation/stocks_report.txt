@@ -1,0 +1,11 @@
+---------- STOCKS REPORT ----------
+asasas: 212212 units — Overstocked
+asass: 121212 units — Overstocked
+sasasa: 2121121 units — Overstocked
+---------- temporary ----------
+
+---------- STOCKS REPORT ----------
+dfghjk: 120 units — Normal stock
+dfghj: 500 units — Critical stock
+---------- temporary ----------
+
